@@ -3,4 +3,5 @@
         <File Path=".editorconfig" />
     </Folder>
     <Project Path="MappingGenerator/MappingGenerator.csproj" />
+    <Project Path="Test/Test.csproj" Id="274a34e8-3347-478a-8b50-fe1a2cf43def" />
 </Solution>

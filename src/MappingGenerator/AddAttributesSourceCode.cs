@@ -50,6 +50,12 @@ public class {CodeGenerator.ValueProviderAttributeName}Attribute(object? value) 
 }}
 
 /// <summary>
+/// Assigns the original value to the decorated property during mapping, ignoring any values from the source object.
+/// </summary>
+[AttributeUsage(AttributeTargets.Property)]
+public class {CodeGenerator.DefaultValueProviderAttributeName}Attribute() : Attribute {{ }}
+
+/// <summary>
 /// Injects a custom C# expression for the decorated property during code generation. 
 /// The instance of the source type can be accessed via the <c>source</c> variable.
 /// </summary>

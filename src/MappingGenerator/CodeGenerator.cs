@@ -10,20 +10,29 @@ public class CodeGenerator : IIncrementalGenerator
     internal const string MapperAttributeName = "GenerateMapperFrom";
     internal const string PropertyAttributeName = "MapFromProperty";
     internal const string ValueProviderAttributeName = "MapConstantValue";
+    internal const string DefaultValueProviderAttributeName = "MapDefaultValue";
     internal const string RawValueProviderAttributeName = "MapRawValue";
 
-    internal static readonly DiagnosticDescriptor UnmappedRequiredPropertyWarning = new(
+    internal static readonly DiagnosticDescriptor UnmappedProperty = new(
         id: "MAPGEN001",
-        title: "Unmapped required property",
-        messageFormat: "Unresolved reference in source. This property will be mapped to 'default'. Use '[{0}]' to manually map to a different field, '[{1}]' to provide a constant value or '[{2}]' to insert C# code.",
+        title: "Unresolved Reference",
+        messageFormat: "Unresolved reference in source. Use '[{0}]' to manually map to a different field, '[{1}]' to provide a constant value or '[{2}]' to insert C# code.",
+        category: "Unresolved Reference",
+        defaultSeverity: DiagnosticSeverity.Warning,
+        isEnabledByDefault: true);
+
+    internal static readonly DiagnosticDescriptor UnmappedRequiredProperty = new(
+        id: "MAPGEN002",
+        title: "Unresolved Reference",
+        messageFormat: "Unresolved required reference in source. Use '[{0}]' to manually map to a different field, '[{1}]' to provide a constant value or '[{2}]' to insert C# code.",
         category: "Unresolved Reference",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true);
 
-    internal static readonly DiagnosticDescriptor PropertyTypeMismatch = new(
-        id: "MAPGEN002",
-        title: "Unmapped required property",
-        messageFormat: "Type mismatch between '{0} {1}.{2}' and '{3} {4}.{5}'. This property will be mapped to 'default' instead.",
+    internal static readonly DiagnosticDescriptor TypeMismatch = new(
+        id: "MAPGEN003",
+        title: "Type Mismatch",
+        messageFormat: "Type mismatch between '{0} {1}.{2}' and '{3} {4}.{5}'",
         category: "Type Mismatch",
         defaultSeverity: DiagnosticSeverity.Error,
         isEnabledByDefault: true);
