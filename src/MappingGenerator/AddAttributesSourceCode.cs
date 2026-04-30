@@ -16,6 +16,10 @@ internal static class AddAttributesSourceCode
 // </auto-generated>
 
 #nullable enable
+
+using System.CodeDom.Compiler;
+using System.Runtime.CompilerServices;
+
 namespace {CodeGenerator.Namespace};
 
 /// <summary>
@@ -24,8 +28,11 @@ namespace {CodeGenerator.Namespace};
 /// </summary>
 /// <param name=""sourceType"">The <see cref=""Type""/> of the source object. Using the <c>typeof</c> operator is recommended.</param>
 [AttributeUsage(AttributeTargets.Class)]
+[GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
 public class {CodeGenerator.MapperAttributeName}Attribute(Type sourceType) : Attribute 
-{{ 
+{{
+    [CompilerGenerated]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public Type SourceType {{ get; }} = sourceType; 
 }}
 
@@ -34,8 +41,11 @@ public class {CodeGenerator.MapperAttributeName}Attribute(Type sourceType) : Att
 /// </summary>
 /// <param name=""name"">The exact name of the source property. Using the <c>nameof</c> operator is recommended.</param>
 [AttributeUsage(AttributeTargets.Property)]
+[GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
 public class {CodeGenerator.PropertyAttributeName}Attribute(string name) : Attribute 
-{{ 
+{{
+    [CompilerGenerated]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public string Name {{ get; }} = name; 
 }}
 
@@ -44,8 +54,11 @@ public class {CodeGenerator.PropertyAttributeName}Attribute(string name) : Attri
 /// </summary>
 /// <param name=""value"">The constant value to assign.</param>
 [AttributeUsage(AttributeTargets.Property)]
+[GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
 public class {CodeGenerator.ValueProviderAttributeName}Attribute(object? value) : Attribute
 {{
+    [CompilerGenerated]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public object? Value {{ get; }} = value;
 }}
 
@@ -53,6 +66,7 @@ public class {CodeGenerator.ValueProviderAttributeName}Attribute(object? value) 
 /// Assigns the original value to the decorated property during mapping, ignoring any values from the source object.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property)]
+[GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
 public class {CodeGenerator.DefaultValueProviderAttributeName}Attribute() : Attribute {{ }}
 
 /// <summary>
@@ -61,8 +75,11 @@ public class {CodeGenerator.DefaultValueProviderAttributeName}Attribute() : Attr
 /// </summary>
 /// <param name=""rawValue"">The raw C# expression to evaluate and assign (e.g., <c>""source.Value * 2""</c>).</param>
 [AttributeUsage(AttributeTargets.Property)]
+[GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
 public class {CodeGenerator.RawValueProviderAttributeName}Attribute(string rawValue) : Attribute 
-{{ 
+{{
+    [CompilerGenerated]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public string RawValue {{ get; }} = rawValue;
 }}
 ";

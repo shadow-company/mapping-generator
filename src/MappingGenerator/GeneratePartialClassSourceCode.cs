@@ -1,6 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace MappingGenerator;
@@ -18,7 +21,7 @@ internal static class GeneratePartialClassSourceCode
 
     private static string GenerateSourceCode(ClassModel classModel, SourceProductionContext sourceProductionContext)
     {
-        HashSet<string> namespaceStrings = [classModel.SourceNamespaceString, classModel.TargetNamespaceString, CodeGenerator.Namespace];
+        HashSet<string> namespaceStrings = [classModel.SourceNamespaceString, classModel.TargetNamespaceString, CodeGenerator.Namespace, "System.CodeDom.Compiler", "System.Diagnostics", "System.Runtime.CompilerServices"];
         string declaration = classModel.ClassDeclarationType switch
         {
             ClassDeclarationTypes.Class => "class",
@@ -50,6 +53,9 @@ partial {declaration} {classModel.TargetName} : {CodeGenerator.InterfaceName}<{c
     /// </summary>
     /// <param name=""source"">The source object to map from.</param>
     /// <returns>A new mapped instance of <see cref=""{classModel.TargetName}""/>.</returns>
+    [CompilerGenerated]
+    [DebuggerNonUserCode]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public static {classModel.TargetName} MapFrom({classModel.SourceName} source)
     {{
         return new {classModel.TargetName}
@@ -63,6 +69,9 @@ partial {declaration} {classModel.TargetName} : {CodeGenerator.InterfaceName}<{c
     /// </summary>
     /// <param name=""sources"">The source array to map from.</param>
     /// <returns>A new array containing the mapped instances of <see cref=""{classModel.TargetName}""/>.</returns>
+    [CompilerGenerated]
+    [DebuggerNonUserCode]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public static {classModel.TargetName}[] MapFrom({classModel.SourceName}[] sources)
     {{
         {classModel.TargetName}[] targets = new {classModel.TargetName}[sources.Length];
@@ -80,6 +89,9 @@ partial {declaration} {classModel.TargetName} : {CodeGenerator.InterfaceName}<{c
     /// </summary>
     /// <param name=""sources"">The source list to map from.</param>
     /// <returns>A new list containing the mapped instances of <see cref=""{classModel.TargetName}""/>.</returns>
+    [CompilerGenerated]
+    [DebuggerNonUserCode]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public static List<{classModel.TargetName}> MapFrom(List<{classModel.SourceName}> sources)
     {{
         List<{classModel.TargetName}> targets = new List<{classModel.TargetName}>(sources.Count);
@@ -97,6 +109,9 @@ partial {declaration} {classModel.TargetName} : {CodeGenerator.InterfaceName}<{c
     /// </summary>
     /// <param name=""sources"">The source collection to map from.</param>
     /// <returns>A new collection containing the mapped instances of <see cref=""{classModel.TargetName}""/>.</returns>
+    [CompilerGenerated]
+    [DebuggerNonUserCode]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public static IEnumerable<{classModel.TargetName}> MapFrom(IEnumerable<{classModel.SourceName}> sources)
     {{
         return sources.Select(source => MapFrom(source));
@@ -108,6 +123,9 @@ partial {declaration} {classModel.TargetName} : {CodeGenerator.InterfaceName}<{c
     /// <param name=""sources"">The source dictionary to map from.</param>
     /// <typeparam name=""TKey"">The source key type of the dictionary.</typeparam>
     /// <returns>A new dictionary containing the mapped instances of <see cref=""{classModel.TargetName}""/>.</returns>
+    [CompilerGenerated]
+    [DebuggerNonUserCode]
+    [GeneratedCode(""{CodeGenerator.Namespace}"", ""1.0.0"")]
     public static Dictionary<TKey, {classModel.TargetName}> MapFrom<TKey>(Dictionary<TKey, {classModel.SourceName}> sources) where TKey : notnull
     {{
         Dictionary<TKey, {classModel.TargetName}> targets = new Dictionary<TKey, {classModel.TargetName}>(sources.Count);
